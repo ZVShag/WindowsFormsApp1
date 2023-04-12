@@ -15,7 +15,7 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        private SqlConnection sqcon=null;
+        public SqlConnection sqcon=null;
         public Form1()
         {
             InitializeComponent();
@@ -31,6 +31,14 @@ namespace WindowsFormsApp1
             cmd.Parameters.AddWithValue("Age", int.Parse(textBox3.Text));
             cmd.Parameters.AddWithValue("Profession", textBox4.Text);
             cmd.ExecuteNonQuery();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            sqcon.Close();
+            DataPerson dataPerson = new DataPerson();
+            dataPerson.Show();
+            this.Hide();
         }
     }
 }
